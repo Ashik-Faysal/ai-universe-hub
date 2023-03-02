@@ -104,5 +104,11 @@ const openModalDetails = (tools) => {
     </div>
   `;
 
+  const rightSide= document.getElementById("modal-body-right");
+  rightSide.innerHTML=`
+           <img class="img-fluid" src="${tools.image_link[0]}" alt="">
+           <h3 class="text-center my-3 fw-bold">${tools.input_output_examples[0].input}</h3>
+           <p class="text-center">${tools.input_output_examples[0].output}</p>
+  `;
   console.log(tools);
 };
