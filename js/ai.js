@@ -69,18 +69,18 @@ const openModalDetails = (tools) => {
   leftSide.innerHTML = `
   
   <h3>${tools.description ? tools.description : "No Description"}</h3>
-  <div class="d-flex justify-content-between gap-2">
-      <div class="fs-3 fw-semibold bg-body-secondary text-success p-3">${
+  <div class="d-md-flex justify-content-between gap-2">
+      <div class="fs-3 fw-semibold bg-body-secondary text-success p-1">${
         tools.pricing[0].price
       } Basic</div>
-      <div class="fs-3 fw-semibold bg-body-secondary text-warning p-3">${
+      <div class="fs-3 fw-semibold bg-body-secondary text-warning p-1">${
         tools.pricing[1].price
       } Pro</div>
-      <div class="fs-3 fw-semibold bg-body-secondary text-danger p-5">${
+      <div class="fs-3 fw-semibold bg-body-secondary text-danger p-2">${
         tools.pricing[2].price
       }</div>
     </div>
-    <div class="d-flex justify-content-between gap-2 mt-4">
+    <div class="d-md-flex justify-content-between gap-2 mt-4">
       
       <div class="mx-2">
       <h3>Features</h3>
