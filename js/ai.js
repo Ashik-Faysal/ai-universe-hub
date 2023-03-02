@@ -8,22 +8,20 @@ const loadAI = () => {
 const displayAI = (tools) => {
   console.log(tools);
   const showUIDetails = document.getElementById("show-ui-details");
-
   // display 10 Phone
   const showAll = document.getElementById("show-all");
+  let visibleTools = tools.slice(0, 6);
   if (tools.length > 6) {
-    tools = tools.slice(0, 6);
     showAll.classList.remove("d-none");
-  } else {
-    showAll.classList.add("d-none");
   }
 
-
-  tools.forEach((tool) => {
-    console.log(tool);
-    const show = document.createElement("div");
-    show.classList.add("col");
-    show.innerHTML = `
+  const showTools = (toolsToDisplay) => {
+    showUIDetails.innerHTML = "";
+    toolsToDisplay.forEach((tool) => {
+      console.log(tool);
+      const show = document.createElement("div");
+      show.classList.add("col");
+      show.innerHTML = `
     
 <div class="card h-100 p-3">
     <img src="${tool.image}" class="card-img-top" alt="...">
@@ -43,7 +41,19 @@ const displayAI = (tools) => {
   </div>
     
     `;
-    showUIDetails.appendChild(show);
+      showUIDetails.appendChild(show);
+    });
+    if (toolsToDisplay.length === tools.length) {
+      showAll.classList.add("d-none");
+    } else {
+      showAll.classList.remove("d-none");
+    }
+  };
+  showAll.addEventListener("click", () => {
+    visibleTools = tools;
+    showTools(visibleTools);
   });
+
+  showTools(visibleTools);
 };
 loadAI();
