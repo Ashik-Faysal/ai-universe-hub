@@ -6,7 +6,7 @@ const loadAI = () => {
     .catch((err) => console.log(err));
 };
 const displayAI = (tools) => {
-  console.log(tools);
+  // console.log(tools);
   const showUIDetails = document.getElementById("show-ui-details");
   // display 10 Phone
   const showAll = document.getElementById("show-all");
@@ -18,7 +18,7 @@ const displayAI = (tools) => {
   const showTools = (toolsToDisplay) => {
     showUIDetails.innerHTML = "";
     toolsToDisplay.forEach((tool) => {
-      console.log(tool);
+      // console.log(tool);
       const show = document.createElement("div");
       show.classList.add("col");
       show.innerHTML = `
@@ -34,7 +34,7 @@ const displayAI = (tools) => {
         <h5 class="fs-2 card-title">${tool.name}</h5>
         <p class="card-text text-body-secondary"><i class="fa-solid fa-calendar-days mx-2 fw-bold"></i>${tool.published_in}</p>
       </div>
-      <button class="btn fs-3"  data-bs-toggle="modal" data-bs-target="#AIDetailsModal">
+      <button onclick="showModalDetails('${tool.id}')" class="btn fs-3"  data-bs-toggle="modal" data-bs-target="#AIDetailsModal">
         <i class="fa-solid fa-arrow-right border p-2 bg-danger bg-opacity-10 rounded-circle"></i>
       </button>
     </div>
@@ -56,4 +56,35 @@ const displayAI = (tools) => {
 
   showTools(visibleTools);
 };
-loadAI();
+
+const showModalDetails = (id) => {
+  const URL = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  fetch(URL)
+    .then((res) => res.json())
+    .then((data) =>openModalDetails(data.data))
+    .catch((err) => console.log(err));
+};
+const openModalDetails = (tools) => {
+  console.log(tools.features[1])
+  const leftSide = document.getElementById("modal-body-left");
+  leftSide.innerHTML=`
+  
+  <h3>${tools.description? tools.description:"No Description"}</h3>
+  <div class="d-flex justify-content-between gap-2">
+      <div class="fs-3 fw-semibold bg-body-secondary text-success p-3">${tools.pricing[0].price} Basic</div>
+      <div class="fs-3 fw-semibold bg-body-secondary text-warning p-3">${tools.pricing[1].price} Pro</div>
+      <div class="fs-3 fw-semibold bg-body-secondary text-danger p-3">${tools.pricing[2].price}</div>
+    </div>
+    <div class="d-flex justify-content-between gap-2">
+      <ul class="mx-2">
+        <li>${tools.features[1]? tools.features[1].feature_name: ""}</li>
+        <li>${tools.features[2]? tools.features[2].feature_name: ""}</li>
+        <li>${tools.features[3]? tools.features[3].feature_name: ""}</li>
+        <li>${tools.features[4]? tools.features[4].feature_name: ""}</li>
+      </ul>
+      <div></div>
+    </div>
+  
+  `
+}
+

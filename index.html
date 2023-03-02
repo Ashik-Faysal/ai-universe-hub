@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="container">
+  <body class="container" onload="loadAI()">
     <header class="mt-5 text-center">
       <h1 class="fw-bold my-4">AI Universe Hub</h1>
       <button class="btn btn-danger text-light fs-3 p-3 rounded-4">
@@ -45,11 +45,15 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="AIDetailsModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <h1 class="modal-title fs-5" id="AIDetailsModalLabel">Modal title</h1> -->
+        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div id="modal-body" class="modal-body d-flex justify-content-around">
+       <div id="modal-body-left" class="bg-danger-subtle bg-opacity-10">
+       </div>
+       <div class="bg-info-subtle">
+        <h1>Right side</h1>
+       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -67,6 +71,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="./js/ai.js"></script>
-    <!-- <script src="./js/check.js"></script> -->
+
+
+
   </body>
 </html>
