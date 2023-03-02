@@ -26,17 +26,17 @@ const displayAI = (tools) => {
 <div class="card h-100 p-3">
     <img src="${tool.image}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class=" fs-1 card-title">Features</h5>
+      <h5 class=" fs-2">Features</h5>
       <p class="card-text text-body-secondary">1.${tool.features[0]} <br>2.${tool.features[1]}<br>3.${tool.features[2]} </p>
     </div> <hr>
     <div class="d-flex justify-content-between align-items-center">
       <div>
-        <h5 fs-1 card-title">${tool.name}</h5>
+        <h5 class="fs-2 card-title">${tool.name}</h5>
         <p class="card-text text-body-secondary"><i class="fa-solid fa-calendar-days mx-2 fw-bold"></i>${tool.published_in}</p>
       </div>
-      <div class="fs-3">
+      <button class="btn fs-3"  data-bs-toggle="modal" data-bs-target="#AIDetailsModal">
         <i class="fa-solid fa-arrow-right border p-2 bg-danger bg-opacity-10 rounded-circle"></i>
-      </div>
+      </button>
     </div>
   </div>
     
