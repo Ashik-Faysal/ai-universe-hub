@@ -114,3 +114,14 @@ const openModalDetails = (tools) => {
   `;
   console.log(tools);
 };
+
+const sortByDate = () => {
+  const URL = `https://openapi.programming-hero.com/api/ai/tools`;
+  fetch(URL)
+    .then((res) => res.json())
+    .then((data) => {
+      const sortedTools = data.data.tools.sort((a, b) => new Date(a.published_in) - new Date(b.published_in));
+      displayAI(sortedTools);
+    })
+    .catch((err) => console.log(err));
+};
