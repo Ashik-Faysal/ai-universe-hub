@@ -27,7 +27,11 @@ const displayAI = (tools) => {
     <img src="${tool.image}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class=" fs-2">Features</h5>
-      <p class="card-text text-body-secondary">1.${tool.features[0]} <br>2.${tool.features[1]}<br>3.${tool.features[2]} </p>
+      <ol class="card-text text-body-secondary">
+          <li>${tool.features[0]}</li>
+          <li>${tool.features[1]}</li>
+          <li>${tool.features[2]}</li>
+      </ol>
     </div> <hr>
     <div class="d-flex justify-content-between align-items-center">
       <div>
