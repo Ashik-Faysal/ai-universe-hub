@@ -14,7 +14,7 @@ const displayAI = (tools) => {
   if (tools.length > 6) {
     showAll.classList.remove("d-none");
   }
-
+  // document.getElementById("spinner").classList.remove("d-none");
   const showTools = (toolsToDisplay) => {
     showUIDetails.innerHTML = "";
     toolsToDisplay.forEach((tool) => {
@@ -43,6 +43,8 @@ const displayAI = (tools) => {
     `;
       showUIDetails.appendChild(show);
     });
+    // stop spinner 
+document.getElementById("spinner").classList.add("d-none");
     if (toolsToDisplay.length === tools.length) {
       showAll.classList.add("d-none");
     } else {
@@ -53,7 +55,6 @@ const displayAI = (tools) => {
     visibleTools = tools;
     showTools(visibleTools);
   });
-
   showTools(visibleTools);
 };
 
