@@ -28,9 +28,9 @@ const displayAI = (tools) => {
     <div class="card-body">
       <h5 class=" fs-2">Features</h5>
       <ol class="card-text text-body-secondary">
-          <li>${tool.features[0]}</li>
-          <li>${tool.features[1]}</li>
-          <li>${tool.features[2]}</li>
+      ${tool.features[0] ? `<li>${tool.features[0]}</li>` : ''}
+      ${tool.features[1] ? `<li>${tool.features[1]}</li>` : ''}
+      ${tool.features[2] ? `<li>${tool.features[2]}</li>` : ''}
       </ol>
     </div> <hr>
     <div class="d-flex justify-content-between align-items-center">
