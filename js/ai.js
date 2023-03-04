@@ -79,10 +79,10 @@ const openModalDetails = (tools) => {
   const leftSide = document.getElementById("modal-body-left");
   leftSide.innerHTML = `
     <h3>${tools.description ? tools.description : "No Description"}</h3>
-    <div class="d-md-flex justify-content-between gap-2">
-      <div class="fs-3 fw-semibold bg-body-secondary text-success p-1">${tools.pricing !== null ? tools.pricing[0].price : ""} ${tools.pricing !== null ? tools.pricing[0].plan : ""}</div>
-      <div class="fs-3 fw-semibold bg-body-secondary text-warning p-1">${tools.pricing !== null ? tools.pricing[1].price : ""} ${tools.pricing !== null ? tools.pricing[1].plan : ""}</div>
-      <div class="fs-3 fw-semibold bg-body-secondary text-danger p-2">${tools.pricing !== null ? tools.pricing[2].price : ""}</div>
+    <div class="row gap-2">
+      <div class="col fs-3 fw-semibold bg-body-secondary text-success p-1">${tools.pricing !== null ? tools.pricing[0].price : ""} ${tools.pricing !== null ? tools.pricing[0].plan : ""}</div>
+      <div class="col fs-3 fw-semibold bg-body-secondary text-warning p-1">${tools.pricing !== null ? tools.pricing[1].price : ""} ${tools.pricing !== null ? tools.pricing[1].plan : ""}</div>
+      <div class="col fs-3 fw-semibold bg-body-secondary text-danger p-2">${tools.pricing !== null ? tools.pricing[2].price : ""}</div>
     </div>
   `;
   
