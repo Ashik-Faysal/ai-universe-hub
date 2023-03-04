@@ -70,6 +70,7 @@ const showModalDetails = (id) => {
     .catch((err) => console.log(err));
 };
 const openModalDetails = (tools) => {
+  document.getElementById("modal-body-right").innerHTML= "";
   const leftSide = document.getElementById("modal-body-left");
   leftSide.innerHTML = `
   
@@ -103,10 +104,10 @@ value.forEach(function (item) {
 
 
 console.log(tools);
-  const rightSide= document.getElementById("modal-body-right");
+const rightSide= document.getElementById("modal-body-right");
   rightSide.innerHTML=`
            <img class="img-fluid" src="${tools.image_link !==null?tools.image_link[0] : ""}" alt="">
-           <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${(tools.accuracy !==null? tools.accuracy.score : "" )*100}% accuracy</p>
+           <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${(tools.accuracy !==0? tools.accuracy.score*100 : "" )}% accuracy</p>
            <h3 class="text-center my-3 fw-bold">${tools.input_output_examples !==null? tools.input_output_examples[0].input : ""}</h3>
            <p class="text-center">${tools.input_output_examples[0].output}</p>
   `;
