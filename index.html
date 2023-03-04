@@ -25,7 +25,10 @@
   <body class="container-fluid" onload="loadAI()">
     <header class="mt-5 text-center">
       <h1 class="fw-bold my-4">AI Universe Hub</h1>
-      <button onclick="sortByDate()" class="btn btn-danger text-light fs-3 p-3 rounded-4">
+      <button
+        onclick="sortByDate()"
+        class="btn btn-danger text-light fs-3 p-3 rounded-4"
+      >
         Sort By Date
       </button>
     </header>
@@ -79,10 +82,16 @@
                 id="modal-body"
                 class="modal-body d-md-flex justify-content-between gap-3"
               >
-                <div
-                  id="modal-body-left"
-                  class="bg-danger-subtle bg-opacity-10 p-3 w-md-50"
-                ></div>
+                <div>
+                  <div
+                    id="modal-body-left"
+                    class="bg-danger-subtle bg-opacity-10 p-3 w-md-50"
+                  ></div>
+                  <div>
+                    <ul id="left-features"></ul>
+                    <ul id="right-features"></ul>
+                  </div>
+                </div>
                 <div id="modal-body-right" class="w-md-50"></div>
               </div>
               <div class="modal-footer">
