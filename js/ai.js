@@ -73,35 +73,66 @@ const showModalDetails = (id) => {
     .then((data) => openModalDetails(data.data))
     .catch((err) => console.log(err));
 };
-
 const openModalDetails = (tools) => {
-  document.getElementById("modal-body-right").innerHTML= "";
+  // leftSide.innerHTML= "";
+  console.log(tools);
   const leftSide = document.getElementById("modal-body-left");
   leftSide.innerHTML = `
     <h3>${tools.description ? tools.description : "No Description"}</h3>
     <div class="row gap-2">
-      <div class="col fs-3 fw-semibold bg-body-secondary text-success p-1">${tools.pricing !== null ? tools.pricing[0].price : ""} ${tools.pricing !== null ? tools.pricing[0].plan : ""}</div>
-      <div class="col fs-3 fw-semibold bg-body-secondary text-warning p-1">${tools.pricing !== null ? tools.pricing[1].price : ""} ${tools.pricing !== null ? tools.pricing[1].plan : ""}</div>
-      <div class="col fs-3 fw-semibold bg-body-secondary text-danger p-2">${tools.pricing !== null ? tools.pricing[2].price : ""}</div>
+      <div class="col fs-3 fw-semibold bg-body-secondary text-success p-1">${
+        tools.pricing  ? tools.pricing[0].price : ""
+      } ${tools.pricing  ? tools.pricing[0].plan : ""}</div>
+      <div class="col fs-3 fw-semibold bg-body-secondary text-warning p-1">${
+        tools.pricing  ? tools.pricing[1].price : ""
+      } ${tools.pricing  ? tools.pricing[1].plan : ""}</div>
+      <div class="col fs-3 fw-semibold bg-body-secondary text-danger p-2">${
+        tools.pricing  ? tools.pricing[2].price : ""
+      }</div>
     </div>
   `;
-  
-  // leftSide modal feature 
-  let tool = Object.entries(tools.features); 
-  document.getElementById("left-features").innerHTML ="";
-  tool.forEach((item) => document.getElementById("left-features").innerHTML += `<li class="text-secondary-emphasis fs-4">${item[1].feature_name}</li>`);
+
+  // leftSide modal feature
+  let tool = Object.entries(tools.features);
+  document.getElementById("left-features").innerHTML = "";
+  tool.forEach(
+    (item) =>
+      (document.getElementById(
+        "left-features"
+      ).innerHTML += `<li class="text-secondary-emphasis fs-4">${item[1].feature_name}</li>`)
+  );
 
   // rightSide modal Feature
-  document.getElementById("right-features").innerHTML="";
+  document.getElementById("right-features").innerHTML = "";
   let value = tools.integrations;
-  value.forEach((item) => document.getElementById("right-features").innerHTML += `<li class=" text-secondary-emphasis fs-4">${item !== null ? item : "No data Found"}</li>`);
+  value.forEach(
+    (item) =>
+      (document.getElementById(
+        "right-features"
+      ).innerHTML += `<li class=" text-secondary-emphasis fs-4">${
+        item  ? item : "No data Found"
+      }</li>`)
+  );
 
   const rightSide = document.getElementById("modal-body-right");
-  rightSide.innerHTML=`
-    <img class="img-fluid" src="${tools.image_link !== null ? tools.image_link[0] : ""}" alt="">
-    <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${tools.accuracy.score !== null ? tools.accuracy.score * 100 +"% accuracy"  : ""}</p>
-    <h3 class="text-center my-3 fw-bold">${tools.input_output_examples !== null ? tools.input_output_examples[0].input : ""}</h3>
-    <p class="text-center text-secondary-emphasis fs-4">${tools.input_output_examples !== null ? tools.input_output_examples[0].output : ""}</p>
+  
+  rightSide.innerHTML = `
+    <img class="img-fluid" src="${tools?.image_link && tools?.image_link[0]}" alt="">
+    <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${
+      tools.accuracy.score 
+        ? tools.accuracy.score * 100 + "% accuracy"
+        : ""
+    }</p>
+    <h3 class="text-center my-3 fw-bold">${
+      tools.input_output_examples 
+        ? tools.input_output_examples[0].input
+        : ""
+    }</h3>
+    <p class="text-center text-secondary-emphasis fs-4">${
+      tools.input_output_examples 
+        ? tools.input_output_examples[0].output
+        : ""
+    }</p>
   `;
 };
 
@@ -117,3 +148,4 @@ const sortByDate = () => {
     })
     .catch((err) => console.log(err));
 };
+loadAI();
