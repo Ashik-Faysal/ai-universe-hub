@@ -86,16 +86,24 @@ const openModalDetails = (tools) => {
       }</div>
     </div>
   `;
-  
+  // leftSide modal feature 
 let tool = Object.entries(tools.features); 
 document.getElementById("left-features").innerHTML ="";
 tool.forEach(function (item) {
-  console.log(item[1].feature_name);
+  // console.log(item[1].feature_name);
   document.getElementById("left-features").innerHTML += `<li>${item[1].feature_name}</li>`
 });
 
+// rightSide modal Feature
+document.getElementById("right-features").innerHTML="";
+let value= tools.integrations;
+value.forEach(function (item) {
+  console.log(item);
+  document.getElementById("right-features").innerHTML += `<li>${item}</li>`
+});
 
-console.log(tool);
+
+console.log(tools);
   const rightSide= document.getElementById("modal-body-right");
   rightSide.innerHTML=`
            <img class="img-fluid" src="${tools.image_link[0]}" alt="">
@@ -103,7 +111,7 @@ console.log(tool);
            <h3 class="text-center my-3 fw-bold">${tools.input_output_examples[0].input}</h3>
            <p class="text-center">${tools.input_output_examples[0].output}</p>
   `;
-  console.log(tools.features);
+  // console.log(tools.features);
 };
 
 const sortByDate = () => {
