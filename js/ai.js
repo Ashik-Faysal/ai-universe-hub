@@ -89,19 +89,19 @@ const openModalDetails = (tools) => {
   // leftSide modal feature 
   let tool = Object.entries(tools.features); 
   document.getElementById("left-features").innerHTML ="";
-  tool.forEach((item) => document.getElementById("left-features").innerHTML += `<li>${item[1].feature_name}</li>`);
+  tool.forEach((item) => document.getElementById("left-features").innerHTML += `<li class="text-secondary-emphasis fs-4">${item[1].feature_name}</li>`);
 
   // rightSide modal Feature
   document.getElementById("right-features").innerHTML="";
   let value = tools.integrations;
-  value.forEach((item) => document.getElementById("right-features").innerHTML += `<li>${item !== null ? item : "No data Found"}</li>`);
+  value.forEach((item) => document.getElementById("right-features").innerHTML += `<li class=" text-secondary-emphasis fs-4">${item !== null ? item : "No data Found"}</li>`);
 
   const rightSide = document.getElementById("modal-body-right");
   rightSide.innerHTML=`
     <img class="img-fluid" src="${tools.image_link !== null ? tools.image_link[0] : ""}" alt="">
     <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${tools.accuracy.score !== null ? tools.accuracy.score * 100 +"% accuracy"  : ""}</p>
     <h3 class="text-center my-3 fw-bold">${tools.input_output_examples !== null ? tools.input_output_examples[0].input : ""}</h3>
-    <p class="text-center">${tools.input_output_examples !== null ? tools.input_output_examples[0].output : ""}</p>
+    <p class="text-center text-secondary-emphasis fs-4">${tools.input_output_examples !== null ? tools.input_output_examples[0].output : ""}</p>
   `;
 };
 
