@@ -99,7 +99,7 @@ document.getElementById("right-features").innerHTML="";
 let value= tools.integrations;
 value.forEach(function (item) {
   console.log(item);
-  document.getElementById("right-features").innerHTML += `<li>${item}</li>`
+  document.getElementById("right-features").innerHTML += `<li>${item? item : "No data"}</li>`
 });
 
 
