@@ -76,14 +76,13 @@ const openModalDetails = (tools) => {
   <h3>${tools.description ? tools.description : "No Description"}</h3>
   <div class="d-md-flex justify-content-between gap-2">
       <div class="fs-3 fw-semibold bg-body-secondary text-success p-1">${
-        tools.pricing[0].price
+        tools.pricing !==null ? tools.pricing[0].price : ""
       } Basic</div>
       <div class="fs-3 fw-semibold bg-body-secondary text-warning p-1">${
-        tools.pricing[1].price
+        tools.pricing !==null ? tools.pricing[1].price : ""
       } Pro</div>
       <div class="fs-3 fw-semibold bg-body-secondary text-danger p-2">${
-        tools.pricing[2].price
-      }</div>
+        tools.pricing !==null ? tools.pricing[2].price : ""}</div>
     </div>
   `;
   // leftSide modal feature 
@@ -99,16 +98,16 @@ document.getElementById("right-features").innerHTML="";
 let value= tools.integrations;
 value.forEach(function (item) {
   console.log(item);
-  document.getElementById("right-features").innerHTML += `<li>${item? item : "No data"}</li>`
+  document.getElementById("right-features").innerHTML += `<li>${item !==null? item : "No data Found"}</li>`
 });
 
 
 console.log(tools);
   const rightSide= document.getElementById("modal-body-right");
   rightSide.innerHTML=`
-           <img class="img-fluid" src="${tools.image_link[0]}" alt="">
-           <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${(tools.accuracy.score)*100}% accuracy</p>
-           <h3 class="text-center my-3 fw-bold">${tools.input_output_examples[0].input}</h3>
+           <img class="img-fluid" src="${tools.image_link !==null?tools.image_link[0] : ""}" alt="">
+           <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${(tools.accuracy !==null? tools.accuracy.score : "" )*100}% accuracy</p>
+           <h3 class="text-center my-3 fw-bold">${tools.input_output_examples !==null? tools.input_output_examples[0].input : ""}</h3>
            <p class="text-center">${tools.input_output_examples[0].output}</p>
   `;
   // console.log(tools.features);
