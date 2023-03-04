@@ -81,13 +81,13 @@ const openModalDetails = (tools) => {
     <h3>${tools.description ? tools.description : "No Description"}</h3>
     <div class="row gap-2">
       <div class="col fs-3 fw-semibold bg-body-secondary text-success p-1">${
-        tools.pricing  ? tools.pricing[0].price : ""
-      } ${tools.pricing  ? tools.pricing[0].plan : ""}</div>
+        tools.pricing !==0 ? tools.pricing[0].price : "Free of cost"
+      } ${tools.pricing ? tools.pricing[0].plan : ""}</div>
       <div class="col fs-3 fw-semibold bg-body-secondary text-warning p-1">${
-        tools.pricing  ? tools.pricing[1].price : ""
-      } ${tools.pricing  ? tools.pricing[1].plan : ""}</div>
+        tools.pricing ? tools.pricing[1].price : ""
+      } ${tools.pricing ? tools.pricing[1].plan : ""}</div>
       <div class="col fs-3 fw-semibold bg-body-secondary text-danger p-2">${
-        tools.pricing  ? tools.pricing[2].price : ""
+        tools.pricing ? tools.pricing[2].price : ""
       }</div>
     </div>
   `;
@@ -110,28 +110,25 @@ const openModalDetails = (tools) => {
       (document.getElementById(
         "right-features"
       ).innerHTML += `<li class=" text-secondary-emphasis fs-4">${
-        item  ? item : "No data Found"
+        item ? item : "No data Found"
       }</li>`)
   );
 
+  // right side modal body
   const rightSide = document.getElementById("modal-body-right");
-  
+
   rightSide.innerHTML = `
-    <img class="img-fluid" src="${tools?.image_link && tools?.image_link[0]}" alt="">
+    <img class="img-fluid" src="${
+      tools?.image_link && tools?.image_link[0]
+    }" alt="">
     <p class="fs-3 m-4 position-absolute top-0 end-0 badge border border-light  bg-danger p-2">${
-      tools.accuracy.score 
-        ? tools.accuracy.score * 100 + "% accuracy"
-        : ""
+      tools.accuracy.score ? tools.accuracy.score * 100 + "% accuracy" : ""
     }</p>
     <h3 class="text-center my-3 fw-bold">${
-      tools.input_output_examples 
-        ? tools.input_output_examples[0].input
-        : ""
+      tools.input_output_examples ? tools.input_output_examples[0].input : ""
     }</h3>
     <p class="text-center text-secondary-emphasis fs-4">${
-      tools.input_output_examples 
-        ? tools.input_output_examples[0].output
-        : ""
+      tools.input_output_examples ? tools.input_output_examples[0].output : ""
     }</p>
   `;
 };
